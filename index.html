@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 - Два игрока</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1 id="animated-title">2048</h1>
+        <p class="subtitle">Объединяй плитки, чтобы получить плитку 2048!</p>
+        
+        <div class="game-info">
+            <div class="score-container" id="score-container">
+                <div class="score-title">СЧЕТ</div>
+                <div id="score">0</div>
+            </div>
+            <div class="timer-container" id="timer-container">
+                <div class="timer-title">ВРЕМЯ</div>
+                <div id="timer">00:00</div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="btn control-btn" id="new-game">Новая игра</button>
+            <button class="btn control-btn" id="toggle-players-btn">2 игрока</button>
+            <button class="btn control-btn" id="pause-btn">Пауза</button>
+            <button class="btn control-btn" id="exit-btn">Выход</button>
+            <button class="btn control-btn" id="undo-btn">Отменить ход</button>
+            <button class="btn control-btn" id="switch-control-btn">Моб. управление</button>
+            <button class="btn control-btn" id="records-btn"><i class="fas fa-trophy"></i> Рекорды</button>
+        </div>
+    </div>
+    
+    <!-- Контейнер для одного игрока -->
+    <div id="single-player-container">
+        <div id="board"></div>
+    </div>
+    
+    <!-- Контейнер для двух игроков -->
+    <div id="two-players-container" class="hidden">
+        <div class="player-container">
+            <h3 class="player-name" id="player1-name">Игрок 1</h3>
+            <div class="player-board" id="board-player1"></div>
+            <div class="player-score">Счет: <span id="score-player1">0</span></div>
+        </div>
+        <div class="player-container">
+            <h3 class="player-name" id="player2-name">Игрок 2</h3>
+            <div class="player-board" id="board-player2"></div>
+            <div class="player-score">Счет: <span id="score-player2">0</span></div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <p>Используйте <span class="key">←</span> <span class="key">→</span> <span class="key">↑</span> <span class="key">↓</span> для перемещения плиток (Игрок 1)</p>
+        <p>Используйте <span class="key">A</span> <span class="key">D</span> <span class="key">W</span> <span class="key">S</span> для перемещения плиток (Игрок 2)</p>
+        <p>Плитки с одинаковыми числами объединяются при столкновении</p>
+    </div>
+
+    <!-- Контейнер для мобильного управления -->
+    <div class="mobile-controls">
+        <div class="mobile-control-row">
+            <button class="mobile-btn" id="up-btn">↑</button>
+        </div>
+        <div class="mobile-control-row">
+            <button class="mobile-btn" id="left-btn">←</button>
+            <div class="mobile-btn-placeholder"></div>
+            <button class="mobile-btn" id="right-btn">→</button>
+        </div>
+        <div class="mobile-control-row">
+            <button class="mobile-btn" id="down-btn">↓</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно рекордов -->
+    <div id="records-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-crown"></i> Топ рекордов</h2>
+            <div id="records-list"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для имен игроков -->
+    <div id="players-modal" class="modal">
+        <div class="modal-content">
+            <h2>Введите имена игроков</h2>
+            <div class="input-group">
+                <label for="player1-input">Игрок 1:</label>
+                <input type="text" id="player1-input" value="Игрок 1">
+            </div>
+            <div class="input-group">
+                <label for="player2-input">Игрок 2:</label>
+                <input type="text" id="player2-input" value="Игрок 2">
+            </div>
+            <button class="btn" id="start-two-players">Начать игру</button>
+        </div>
+    </div>
+<div class="records-actions">
+    <button class="btn" id="clear-all-records">Очистить все</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
